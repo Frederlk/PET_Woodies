@@ -20,6 +20,9 @@ $gray_01: #8d8d8d;
 $gray_02: #afafaf;
 $gray_03: #c4c4c4;
 $primary_01: #daa520;
+$primary_02: #f9bdbd;
+$primary_03: #f7dea6;
+$primary_04: #a8dcec;
 $mainColor: $black; // Цвет шрифта по умолчанию
 
 // НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
@@ -51,6 +54,7 @@ $responsiveType: 1;
 @import "base/null";
 
 body {
+    @include scrollbars(rem(10), $primary_01, $white);
     // Скролл заблокирован
     .lock & {
         overflow: hidden;
@@ -58,16 +62,6 @@ body {
     }
     // Сайт загружен
     .loaded & {
-    }
-    &._scroll {
-        .header__wrapper {
-            &::before {
-                background-color: $white;
-            }
-        }
-        .header__body {
-            min-height: rem(60);
-        }
     }
 }
 
@@ -163,7 +157,7 @@ body {
         @include adaptiveValue("padding-top", 120, 60, 950, 479.98, 1);
     }
     &__testi {
-        @include adaptiveValue("padding-top", 80, 20, 950, 479.98, 1);
+        @include adaptiveValue("padding-top", 80, 60, 950, 479.98, 1);
         @include adaptiveValue("padding-bottom", 120, 60, 950, 479.98, 1);
     }
 }

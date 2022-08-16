@@ -1,13 +1,5 @@
-//</ОСНОВНОЙ БЛОК>====================================================================================================
-
 .main {
     position: relative;
-    @media (max-width: $tablet) {
-        padding: 0px 0px 40px 0px;
-    }
-    @media (max-width: $mobile) {
-        padding: 0;
-    }
     &::after {
         content: "";
         position: absolute;
@@ -15,8 +7,8 @@
         min-height: 100%;
         top: 0;
         right: 0;
-        background-color: #f9bdbd;
-        border-bottom-left-radius: 150px;
+        background-color: $primary_02;
+        border-bottom-left-radius: rem(150);
         @media (max-width: $mobile) {
             display: none;
         }
@@ -24,21 +16,19 @@
     &__wrapper {
         position: relative;
         z-index: 2;
-        max-width: 1150px;
         margin: 0 auto;
-        min-height: 800px;
-        @media (max-width: 1150px) {
-            max-width: none;
+        @media (min-width: rem(1150)) {
+            max-width: rem(1150);
+        }
+        @media (min-width: em(900)) {
+            min-height: rem(800);
         }
         @media (min-width: $tablet) {
             display: flex;
             align-items: center;
         }
         @media (max-width: $tablet) {
-            padding: 100px 0px 0px 0px;
-        }
-        @media (max-height: 900px) {
-            min-height: 0;
+            padding-top: rem(100);
         }
     }
 
@@ -47,30 +37,8 @@
             flex: 0 0 100%;
         }
         @media (max-width: $tablet) {
-            margin: 0px 0px 20px 0px;
+            margin-bottom: rem(20);
         }
-    }
-    &__bg {
-        position: absolute;
-        z-index: 1;
-        bottom: 18px;
-        @include adaptiveValue("height", 382, 200, 950, 479.98, 1);
-        @include adaptiveValue("width", 382, 200, 950, 479.98, 1);
-        right: percent(250, 1150);
-        img {
-            max-width: 100%;
-        }
-        @media (max-width: $tablet) {
-            right: auto;
-            left: -10%;
-            bottom: 20%;
-        }
-        @media (max-width: $mobile) {
-            display: none;
-        }
-    }
-
-    &__container {
     }
 
     &__body {
@@ -87,7 +55,7 @@
     &__text {
         @extend %subtitle_01;
         &:not(:last-child) {
-            margin: 0px 0px 16px 0px;
+            margin-bottom: rem(16);
         }
         span {
             font-weight: 700;
@@ -96,18 +64,17 @@
 
     &__title {
         font-weight: 700;
-
         @include adaptiveValue("font-size", 72, 36, 950, 479.98, 1);
         line-height: math.div(98, 72);
-        color: #313235;
+        color: $dark_01;
         &:not(:last-child) {
-            margin: 0px 0px 16px 0px;
+            margin-bottom: rem(16);
         }
     }
 
     &__btn {
-        min-height: 50px;
-        min-width: 175px;
+        min-height: rem(50);
+        min-width: rem(175);
     }
 
     &__image {
@@ -115,65 +82,41 @@
         z-index: 3;
         text-align: center;
         @media (min-width: $tablet) {
+            transform: translate(-100%, rem(40));
             flex: 0 0 50%;
-            transform: translate(-100%, 40px);
         }
         @media (max-width: $tablet) {
-            max-width: 400px;
+            max-width: rem(400);
             margin: 0 auto;
         }
         img {
             max-width: 100%;
         }
     }
-}
 
-//========================================================================================================================================================
-.top {
-    display: flex;
-    align-items: center;
-    @media (max-width: $mobile) {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    &__icon {
-        flex: 0 0 30px;
-        height: 30px;
-        margin: 0px 8px 0px 0px;
-        path {
-            stroke: rgba(137, 121, 66, 0.5);
+    &__bg {
+        position: absolute;
+        z-index: 1;
+        bottom: rem(18);
+        @include adaptiveValue("height", 382, 200, 950, 479.98, 1);
+        @include adaptiveValue("width", 382, 200, 950, 479.98, 1);
+        right: percent(250, 1150);
+        img {
+            max-width: 100%;
         }
-    }
-
-    &__subtitle {
-        @extend %subtitle_01;
-        font-weight: 700;
-        margin: 0px 16px 0px 0px;
         @media (max-width: $tablet) {
-            margin: 0px 5px 0px 0px;
+            right: auto;
+            left: -10%;
+            bottom: 20%;
         }
-    }
-
-    &__line {
-        flex: 1 1 auto;
-        height: 2px;
-        background-color: $mainColor;
         @media (max-width: $mobile) {
             display: none;
         }
     }
-
-    &__title {
-        font-weight: 800;
-        @include adaptiveValue("font-size", 72, 32, 950, 479.98, 1);
-        line-height: math.div(98, 72);
-        color: rgba(34, 34, 34, 0.1);
-        @media (max-width: $mobile) {
-            flex: 1 1 100%;
-            text-align: center;
-        }
-    }
 }
+
+//========================================================================================================================================================
+
 .about {
     position: relative;
     &__container {
@@ -187,13 +130,10 @@
         }
     }
 
-    &__body {
-    }
-
     &__row-top {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: rem(40);
         @media (max-width: $mobile) {
             justify-content: center;
             flex-wrap: wrap;
@@ -213,7 +153,7 @@
     &__bg-icon {
         position: absolute;
         bottom: percent(175, 950);
-        left: -60px;
+        left: rem(-60);
         @include adaptiveValue("height", 382, 200, 950, 479.98, 1);
         @include adaptiveValue("width", 382, 200, 950, 479.98, 1);
         img {
@@ -224,11 +164,12 @@
         }
     }
 }
+
 .row-top-about {
     &__column {
         &_image {
-            margin-right: 20px;
-            flex: 0 1 426px;
+            margin-right: rem(20);
+            flex: 0 1 rem(426);
             @media (max-width: $mobile) {
                 margin-right: 0;
                 @include adaptiveValue("margin-bottom", 50, 20, 950, 479.98, 1);
@@ -236,11 +177,12 @@
             }
         }
         &_info {
-            flex: 0 1 450px;
-            margin: 0px 0px 0px 20px;
+            flex: 0 1 rem(450);
+            @media (min-width: $mobile) {
+                margin-left: rem(20);
+            }
             @media (max-width: $mobile) {
                 flex: 1 1 100%;
-                margin: 0;
             }
         }
     }
@@ -252,7 +194,7 @@
     &__image {
         position: relative;
         z-index: 2;
-        min-height: 250px;
+        min-height: rem(250);
         img {
             max-width: 100%;
         }
@@ -266,14 +208,14 @@
         left: 0;
         @include adaptiveValue("width", 278, 180, 950, 479.98, 1);
         @include adaptiveValue("height", 388, 250, 950, 479.98, 1);
-        background-color: #f7dea6;
+        background-color: $primary_03;
         @media (max-width: $mobile) {
             bottom: 5%;
         }
     }
 
     &__info {
-        margin: 22px 0px 0px 0px;
+        margin-top: rem(22);
         @media (max-width: $tablet) {
             margin-top: 0;
         }
@@ -292,23 +234,24 @@
         @extend %text_04;
     }
 }
+
 .row-bottom-about {
     &__column {
         &_image {
             pointer-events: none;
             flex: 0 0 100%;
             @media (max-width: $tablet) {
-                flex: 0 1 300px;
+                flex: 0 1 rem(300);
             }
             @media (max-width: $mobile) {
-                flex: 0 1 200px;
+                flex: 0 1 rem(200);
                 @include adaptiveValue("margin-top", 50, 20, 950, 479.98, 1);
             }
         }
         &_info {
             flex: 0 0 100%;
             @media (max-width: $tablet) {
-                flex: 0 1 650px;
+                flex: 0 1 rem(650);
             }
             @media (max-width: $mobile) {
                 flex: 1 1 100%;
@@ -317,7 +260,7 @@
     }
 
     &__info {
-        max-width: 680px;
+        max-width: rem(680);
         @media (max-width: $tablet) {
             max-width: none;
         }
@@ -340,7 +283,7 @@
     &__image {
         text-align: right;
         transform: translate(-100%, 0px);
-        max-width: 300px;
+        max-width: rem(300);
         @media (max-width: $tablet) {
             transform: translate(0px, 0px);
         }
@@ -362,30 +305,17 @@
     }
 
     &__body {
-        display: flex;
-        margin: 0px -5px;
-        margin-right: -5px;
-        margin-left: -5px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: rem(5);
         @include adaptiveValue("margin-bottom", 60, 30, 950, 479.98, 1);
+        @include adaptiveValue("row-gap", 60, 40, 767, 320, 1);
         @media (max-width: $mobile) {
-            flex-wrap: wrap;
+            grid-template-columns: repeat(2, 1fr);
         }
         @media (max-width: $mobileSmall) {
+            grid-template-columns: 1fr;
             justify-content: center;
-            margin-right: 0;
-            margin-left: 0;
-        }
-    }
-
-    &__column {
-        flex: 0 1 25%;
-        padding: 0px 5px;
-        @media (max-width: $mobile) {
-            flex: 0 1 50%;
-            @include adaptiveValue("margin-bottom", 60, 30, 950, 479.98, 1);
-        }
-        @media (max-width: $mobileSmall) {
-            flex: 1 1 100%;
         }
     }
 
@@ -401,7 +331,7 @@
         flex: 1 1 auto;
         display: flex;
         align-items: flex-end;
-        margin: 0px 0px 10px 0px;
+        margin-bottom: rem(10);
     }
 
     &__number {
@@ -411,14 +341,13 @@
     }
 
     &__icon {
-        margin: 0px 0px 18px 0px;
-        transform: translate(-15px, 0px);
+        @include adaptiveValue("margin-bottom", 18, 15, 950, 767.98, 1);
+        transform: translate(rem(-15), 0px);
         img {
             max-width: 100%;
         }
         @media (max-width: $mobile) {
-            margin: 0px 0px 15px 0px;
-            transform: translate(-10px, 0px);
+            transform: translate(rem(-10), 0px);
         }
     }
 
@@ -434,11 +363,8 @@
     }
 
     &__btn {
-        min-height: 50px;
-        flex: 0 0 212px;
-        @media (max-width: $mobile) {
-            @include adaptiveValue("margin-top", -60, -20, 950, 479.98, 1);
-        }
+        min-height: rem(50);
+        flex: 0 0 rem(212);
         @media (max-width: $mobileSmall) {
             flex: 1 1 100%;
         }
@@ -456,45 +382,16 @@
     }
 
     &__body {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0px -28px;
-        @media (max-width: $tablet) {
-            margin: 0px -10px;
-        }
-        @media (max-width: $mobileSmall) {
-            margin: 0;
-        }
-    }
-
-    &__column {
-        flex: 0 1 33.333%;
-        @include adaptiveValue("margin-bottom", 40, 20, 950, 479.98, 1);
-        padding: 0px 28px;
-        @media (max-width: $tablet) {
-            padding: 0 10px;
-        }
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        @include adaptiveValue("gap", 56, 20, 950, 767.98, 1);
         @media (max-width: $mobile) {
-            flex: 0 1 50%;
+            @include adaptiveValue("gap", 40, 20, 767.98, 479.98, 1);
+            grid-template-columns: repeat(2, 1fr);
         }
         @media (max-width: $mobileSmall) {
-            flex: 1 1 100%;
-            padding: 0;
-        }
-        &:nth-child(3n + 1) {
-            .categories__item {
-                background-color: #f9bdbd;
-            }
-        }
-        &:nth-child(3n + 2) {
-            .categories__item {
-                background-color: #f7dea6;
-            }
-        }
-        &:nth-child(3n + 3) {
-            .categories__item {
-                background-color: #a8dcec;
-            }
+            gap: rem(40);
+            grid-template-columns: 1fr;
         }
     }
 
@@ -503,18 +400,18 @@
         flex-direction: column;
         height: 100%;
         overflow: hidden;
-        padding: 25px 15px;
-        min-height: 400px;
+        padding: rem(25) rem(15);
+        min-height: rem(400);
         @include adaptiveValue("border-bottom-left-radius", 120, 80, 950, 479.98, 1);
         @include adaptiveValue("border-top-right-radius", 120, 80, 950, 479.98, 1);
-        &:nth-child(1n + 1) {
-            background-color: #f9bdbd;
-        }
-        &:nth-child(2n + 1) {
-            background-color: #f7dea6;
+        &:nth-child(3n + 1) {
+            background-color: $primary_02;
         }
         &:nth-child(3n + 2) {
-            background-color: #a8dcec;
+            background-color: $primary_03;
+        }
+        &:nth-child(3n + 3) {
+            background-color: $primary_04;
         }
     }
 
@@ -525,7 +422,7 @@
         font-weight: 800;
         @extend %text_04;
         color: $dark_02;
-        transition: all 0.3s ease 0s;
+        transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
                 color: $mainColor;
@@ -538,7 +435,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease 0s;
+        transition: transform 0.3s ease 0s;
         @include adaptiveValue("margin-bottom", 20, 15, 950, 479.98, 1);
         img {
             max-width: 100%;
@@ -557,15 +454,15 @@
         margin-left: auto;
     }
     &__btn {
-        flex: 0 0 125px;
-        min-height: 40px;
+        flex: 0 0 rem(125);
+        min-height: rem(40);
         display: inline-flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        border: 1px solid $dark_02;
-        border-radius: 4px;
-        transition: all 0.3s ease 0s;
+        border: rem(1) solid $dark_02;
+        border-radius: rem(4);
+        transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
         background-color: transparent;
         font-weight: 600;
         @extend %text_02;
@@ -592,63 +489,51 @@
     &__body {
         display: flex;
         justify-content: space-between;
-        margin: 0px -10px;
+        @include adaptiveValue("gap", 40, 20, 950, 767.98, 1);
     }
 
-    &__column {
-        padding: 0px 10px;
-        &_image {
-            flex: 0 0 percent(260, 950);
-            &:first-child {
-                .testi__image {
-                    img {
-                        object-position: left -30px;
-                        transform: scale(1.3);
-                    }
-                }
-                @media (max-width: $mobile) {
-                    display: none;
-                }
-            }
-            @media (max-width: $mobile) {
-                flex: 0 1 40%;
-            }
-            @media (max-width: $mobileSmall) {
-                display: none;
-            }
-        }
-
-        &_slider {
-            flex: 0 0 percent(405, 950);
-            min-width: 0;
-            @media (max-width: $mobile) {
-                flex: 0 1 60%;
-            }
-            @media (max-width: $mobileSmall) {
-                flex: 1 1 100%;
-            }
-        }
-    }
-
-    &__image {
+    &__image-ibg {
+        flex: 0 0 percent(260, 950);
         @include adaptiveValue("border-bottom-right-radius", 80, 60, 950, 479.98, 1);
         @include adaptiveValue("border-top-left-radius", 80, 60, 950, 479.98, 1);
         overflow: hidden;
-        padding: 0px 0px percent(320, 240) 0px;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-        min-height: 250px;
-    }
-
-    &__slider-wrap {
+        box-shadow: 0px 0px rem(8) rgba(0, 0, 0, 0.15);
+        min-height: rem(250);
+        @media (max-width: $mobile) {
+            flex: 0 1 40%;
+            &:first-child {
+                display: none;
+            }
+        }
+        @media (max-width: $mobileSmall) {
+            display: none;
+        }
     }
 
     &__slider {
+        flex: 0 1 percent(405, 950);
+        min-width: 0;
+        @media (max-width: $mobile) {
+            flex: 0 1 60%;
+        }
+        @media (max-width: $mobileSmall) {
+            flex: 1 1 100%;
+        }
+    }
+
+    &__swiper {
         @include adaptiveValue("border-bottom-left-radius", 80, 60, 950, 479.98, 1);
         @include adaptiveValue("border-top-right-radius", 80, 60, 950, 479.98, 1);
-        border: 1px solid #a8dcec;
+        border: rem(1) solid $primary_04;
         background-color: $white;
-        padding: 54px 16px;
-        margin: 0px 0px 20px 0px;
+        padding: rem(54) rem(16);
+        margin-bottom: rem(20);
+        @media (max-width: $mobileSmall) {
+            padding: rem(40) rem(16);
+        }
+    }
+
+    &__wrapper {
     }
 
     &__slide {
@@ -656,43 +541,41 @@
 
     &__stars {
         display: flex;
-        margin: 0px 0px 16px 0px;
+        gap: rem(4);
+        margin-bottom: rem(16);
     }
 
     &__star {
-        &:not(:last-child) {
-            margin: 0px 4px 0px 0px;
-        }
     }
 
     &__text {
         font-weight: 600;
         line-height: math.div(19, 14);
         color: $dark_02;
-        margin: 0px 0px 16px 0px;
+        margin-bottom: rem(16);
     }
 
     &__slide-bottom {
         display: flex;
         align-items: center;
+        gap: rem(8);
     }
 
-    &__avatar {
-        flex: 0 0 40px;
-        height: 40px;
+    &__avatar-ibg {
+        flex: 0 0 rem(40);
+        height: rem(40);
         overflow: hidden;
         border-radius: 50%;
-        margin: 0px 8px 0px 0px;
     }
 
     &__info {
         font-weight: 600;
         @extend %text_03;
-        color: #afafaf;
+        color: $gray_02;
     }
 
     &__navigation {
-        margin: 0px 0px 25px 0px;
+        margin-bottom: rem(25);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -701,30 +584,23 @@
     &__nav-item {
         font-weight: 600;
         line-height: math.div(19, 14);
-        color: #c4c4c4;
+        color: $gray_03;
         display: flex;
+        gap: rem(8);
         align-items: center;
-        transition: all 0.3s ease 0s;
         span {
-            transition: all 0.3s ease 0s;
+            transition: color 0.3s ease 0s;
         }
         svg {
             path {
-                transition: all 0.3s ease 0s;
+                transition: fill 0.3s ease 0s;
             }
         }
         &_prev {
-            span {
-                margin: 0px 0px 0px 8px;
-            }
         }
-
         &_next {
             svg {
                 transform: rotate(-180deg);
-            }
-            span {
-                margin: 0px 8px 0px 0px;
             }
         }
         @media (any-hover: hover) {
@@ -740,22 +616,25 @@
             }
         }
     }
+
     &__pagination {
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        gap: rem(8);
+        cursor: pointer;
+        @media (max-width: $mobileSmall) {
+            justify-content: center;
+        }
         .swiper-pagination-bullet {
-            height: 8px;
-            width: 40px;
-            transition: all 0.3s ease 0s;
-            border-radius: 8px;
-            background-color: #e5e5e5;
-            &:not(:first-child) {
-                margin: 0px 0px 0px 8px;
-            }
+            height: rem(8);
+            width: rem(40);
+            transition: background-color 0.3s ease 0s;
+            border-radius: rem(8);
+            background-color: $gray_03;
         }
         .swiper-pagination-bullet-active {
-            background-color: #daa520;
+            background-color: $primary_01;
         }
     }
 }

@@ -25,3 +25,52 @@
     line-height: math.div(49, 36);
     color: $dark_02;
 }
+
+//========================================================================================================================================================
+
+.top {
+    display: flex;
+    align-items: center;
+    @media (max-width: $mobile) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    &__icon {
+        font-size: rem(30);
+        height: rem(30);
+        margin-right: rem(8);
+        path {
+            stroke: rgba(137, 121, 66, 0.5);
+        }
+    }
+
+    &__subtitle {
+        @extend %subtitle_01;
+        font-weight: 700;
+        margin-right: rem(16);
+        @media (max-width: $tablet) {
+            margin-right: rem(5);
+        }
+    }
+
+    &__line {
+        flex: 1 1 auto;
+        height: rem(2);
+        background-color: $mainColor;
+        @media (max-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__title {
+        font-weight: 800;
+        @include adaptiveValue("font-size", 72, 32, 950, 479.98, 1);
+        line-height: math.div(98, 72);
+        color: rgba(34, 34, 34, 0.1);
+        @media (max-width: $mobile) {
+            flex: 1 1 100%;
+            text-align: center;
+            margin-top: rem(5);
+        }
+    }
+}

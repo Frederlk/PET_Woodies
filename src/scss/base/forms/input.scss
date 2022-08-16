@@ -19,12 +19,13 @@ textarea {
     border: rem(1) solid $primary_01;
     border-top-left-radius: rem(4);
     border-bottom-left-radius: rem(4);
-    border-right: 0 solid transparent;
+    transition: color 0.3s ease 0s, border 0.3s ease 0s;
     &:focus-visible {
         outline-offset: rem(-1);
-        outline: white solid rem(1);
+        outline: transparent solid rem(1);
     }
     &._form-focus {
+        border: rem(1) solid $mainColor;
         color: $mainColor;
     }
     &._form-error {

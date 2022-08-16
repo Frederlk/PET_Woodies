@@ -7,10 +7,10 @@
     }
 
     &__top {
-        @include adaptiveValue("padding-top", 50, 20, 950, 479.98, 1);
-        @include adaptiveValue("padding-bottom", 50, 20, 950, 479.98, 1);
+        @include adaptiveValue("padding-top", 50, 30, 950, 479.98, 1);
+        @include adaptiveValue("padding-bottom", 50, 30, 950, 479.98, 1);
         @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 35, 20, 950, 479.98, 1);
+            @include adaptiveValue("margin-bottom", 35, 30, 950, 479.98, 1);
         }
     }
 
@@ -24,11 +24,11 @@
         color: $gray_01;
         text-align: center;
     }
-    &__bg-ibg {
+    &__bg {
         position: absolute;
         width: 100%;
         height: 100%;
-        bottom: rem(-25);
+        bottom: 0;
         left: 0;
         display: flex;
         justify-content: space-between;
@@ -62,15 +62,12 @@
         background: linear-gradient(180deg, $white 0%, rgba(255, 255, 255, 0) 100%);
     }
     &__container {
-    }
-    &__body {
         position: relative;
         z-index: 3;
         display: flex;
         justify-content: space-between;
         align-items: center;
         @media (max-width: $mobile) {
-            justify-content: center;
             flex-wrap: wrap;
         }
     }
@@ -92,9 +89,24 @@
         align-items: center;
         flex: 0 0 percent(450, 950);
         margin-left: rem(20);
+        position: relative;
         @media (max-width: $mobile) {
             flex: 1 1 100%;
             margin: rem(20) 0px 0px 0px;
+        }
+        .form__error {
+            position: absolute;
+            left: 0;
+            @extend %text_01;
+            color: red;
+            @media (min-width: $mobile) {
+                margin-bottom: rem(5);
+                bottom: 100%;
+            }
+            @media (max-width: $mobile) {
+                top: 100%;
+                margin-top: rem(5);
+            }
         }
     }
 
@@ -124,13 +136,15 @@
         padding-top: rem(25);
         @include adaptiveValue("padding-bottom", 45, 10, 950, 479.98, 1);
         display: flex;
+        justify-content: space-between;
+        border-top: rem(1) solid $gray_03;
         gap: rem(25);
-        @media (max-width: $tablet) {
-            justify-content: center;
+        @media (min-width: $tablet) {
+            max-width: rem(700);
         }
         @media (max-width: $mobile) {
-            margin: 0;
             flex-wrap: wrap;
+            gap: rem(0);
         }
     }
 
@@ -138,31 +152,6 @@
         position: relative;
         @media (max-width: $mobile) {
             flex: 1 1 100%;
-        }
-        @media (max-width: $mobile) {
-            &::after {
-                display: none;
-            }
-        }
-        &::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            border-top: rem(1) solid $gray_03;
-            top: 0;
-            left: 0px;
-        }
-        &:first-child {
-            &::after {
-                width: calc(100% - rem(25));
-                left: rem(25);
-            }
-        }
-        &:last-child {
-            &::after {
-                width: calc(100% - rem(25));
-                left: 0px;
-            }
         }
     }
 
@@ -213,31 +202,38 @@
         @extend %text_02;
         color: $dark_01;
         position: relative;
+        transition: color 0.5s ease 0s;
         @media (max-width: $mobile) {
             font-size: rem(22);
-        }
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            background-color: $mainColor;
-            transform: translate(0, -50%);
-        }
-        &::after {
-            width: rem(20);
-            height: rem(3);
-            right: 0;
-        }
-        &::before {
-            width: rem(3);
-            height: rem(20);
-            right: rem(8);
-            transition: all 0.5s ease 0s;
-        }
-        &._spoller-active {
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                background-color: $mainColor;
+                transform: translate(0, -50%);
+                transition: background-color 0.5s ease 0s;
+            }
+            &::after {
+                width: rem(20);
+                height: rem(3);
+                right: 0;
+            }
             &::before {
-                height: 0;
+                width: rem(3);
+                height: rem(20);
+                right: rem(8);
+                transition: height 0.5s ease 0s, background-color 0.5s ease 0s;
+            }
+            &._spoller-active {
+                color: $primary_01;
+                &::after,
+                &::before {
+                    background-color: $primary_01;
+                }
+                &::before {
+                    height: 0;
+                }
             }
         }
     }

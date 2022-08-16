@@ -2,8 +2,8 @@ import Swiper, { Navigation, Pagination, EffectFade } from "swiper";
 import "../../scss/base/swiper.scss";
 
 function initSliders() {
-    if (document.querySelector(".testi__slider")) {
-        new Swiper(".testi__slider", {
+    if (document.querySelector(".testi__swiper")) {
+        new Swiper(".testi__swiper", {
             modules: [Navigation, Pagination, EffectFade],
             observer: true,
             observeParents: true,
