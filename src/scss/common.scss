@@ -1,0 +1,27 @@
+// Заголовки, общие БЄМ блоки и проче...
+%text_01 {
+    font-size: rem(16);
+    line-height: math.div(22, 16);
+}
+
+%text_02 {
+    font-size: rem(18);
+    line-height: math.div(25, 18);
+}
+
+%text_03 {
+    font-size: rem(12);
+    line-height: math.div(16, 12);
+}
+
+%text_04 {
+    font-weight: 600;
+    @include adaptiveValue("font-size", 24, 18, 950, 479.98, 1);
+    line-height: math.div(33, 24);
+}
+
+%subtitle_01 {
+    @include adaptiveValue("font-size", 36, 20, 950, 479.98, 1);
+    line-height: math.div(49, 36);
+    color: $dark_02;
+}
