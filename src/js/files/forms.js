@@ -1,17 +1,3 @@
-// Подключение функционала "Чертогов Фрилансера"
-// Подключение списка активных модулей
-import { flsModules } from "./modules.js";
-// Вспомогательные функции
-import { _slideUp, _slideDown, _slideToggle, FLS } from "./functions.js";
-// Модуль прокрутки к блоку
-import { gotoBlock } from "./scroll/gotoblock.js";
-//================================================================================================================================================================================================================================================================================================================================
-
-/*
-Документация: https://template.fls.guru/template-docs/rabota-s-formami.html
-*/
-
-// Работа с полями формы. Добавление классов, работа с placeholder
 export function formFieldsInit(options = { viewPass: false }) {
     // Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
     const formFields = document.querySelectorAll("input[placeholder],textarea[placeholder]");
@@ -120,7 +106,9 @@ export let formValidate = {
         formRequiredItem.classList.remove("_form-error");
         formRequiredItem.parentElement.classList.remove("_form-error");
         if (formRequiredItem.parentElement.querySelector(".form__error")) {
-            formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
+            formRequiredItem.parentElement.removeChild(
+                formRequiredItem.parentElement.querySelector(".form__error")
+            );
         }
     },
     formClean(form) {
@@ -132,22 +120,6 @@ export let formValidate = {
                 el.parentElement.classList.remove("_form-focus");
                 el.classList.remove("_form-focus");
                 formValidate.removeError(el);
-            }
-            let checkboxes = form.querySelectorAll(".checkbox__input");
-            if (checkboxes.length > 0) {
-                for (let index = 0; index < checkboxes.length; index++) {
-                    const checkbox = checkboxes[index];
-                    checkbox.checked = false;
-                }
-            }
-            if (flsModules.select) {
-                let selects = form.querySelectorAll(".select");
-                if (selects.length) {
-                    for (let index = 0; index < selects.length; index++) {
-                        const select = selects[index].querySelector("select");
-                        flsModules.select.selectBuild(select);
-                    }
-                }
             }
         }, 0);
     },
@@ -202,9 +174,6 @@ export function formSubmit(options = { validate: true }) {
         } else {
             e.preventDefault();
             const formError = form.querySelector("._form-error");
-            if (formError && form.hasAttribute("data-goto-error")) {
-                gotoBlock(formError, true, 1000);
-            }
         }
     }
     // Действия после отправки формы
@@ -217,20 +186,8 @@ export function formSubmit(options = { validate: true }) {
                 },
             })
         );
-        // Показываем попап, если подключен модуль попапов
-        // и для формы указана настройка
-        setTimeout(() => {
-            if (flsModules.popup) {
-                const popup = form.dataset.popupMessage;
-                popup ? flsModules.popup.open(popup) : null;
-            }
-        }, 0);
+
         // Очищаем форму
         formValidate.formClean(form);
-        // Сообщаем в консоль
-        formLogging(`Форма отправлена!`);
-    }
-    function formLogging(message) {
-        FLS(`[Формы]: ${message}`);
     }
 }
